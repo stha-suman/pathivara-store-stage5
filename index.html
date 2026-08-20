@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Pathivara Store clothing shop in Phungling, Taplejung." />
+		<title>Pathivara Store | Fashion for Everyone</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="container nav-wrap">
+				<a href="index.html" class="brand">
+					<span class="brand-mark">P</span>
+					<span>
+						<strong>Pathivara Store</strong>
+						<small>Fashion for Everyone</small>
+					</span>
+				</a>
+				<button class="menu-toggle" id="menuToggle">☰</button>
+				<nav class="main-nav" id="mainNav">
+					<a class="active" href="index.html">Home</a>
+					<a href="shop.html">Shop</a>
+					<a href="#about">About</a>
+					<a href="#contact">Contact</a>
+				</nav>
+				<div class="nav-actions">
+					<button class="icon-btn" id="themeToggle">☾</button>
+					<button class="lang-btn active" data-lang="en">EN</button>
+					<button class="lang-btn" data-lang="ne">ने</button>
+					<a class="cart-btn" href="cart.html">🛒 <span id="cartCount">0</span></a>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<section class="page-hero">
+				<div class="container">
+					<p class="eyebrow">PATHIVARA STORE • PHUNGLING</p>
+					  <h1 data-en="Fashion for every generation." data-ne="हरेक पुस्ताका लागि फेसन।">Fashion for every generation.</h1>
+					  <p data-en="Men's, women's and kids' clothing, sarees, shirts, jeans and more." data-ne="पुरुष, महिला र बालबालिकाका कपडा, सारी, सर्ट, जिन्स र अन्य।">
+						Men's, women's and kids' clothing, sarees, shirts, jeans and more.
+					</p>
+					<a class="btn btn-primary" href="shop.html">Shop Now</a>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<div class="section-heading">
+						<div>
+							<p class="eyebrow">SHOP</p>
+							<h2>Featured collection</h2>
+						</div>
+						<a class="btn btn-outline" href="shop.html">View All Products →</a>
+					</div>
+					<div class="product-grid" id="homeGrid"></div>
+				</div>
+			</section>
+
+			<section class="offer-section">
+				<div class="container">
+					<div class="offer">
+						<div>
+							<p class="eyebrow">SPECIAL OFFER</p>
+							<h2>Fresh styles for every occasion.</h2>
+							<p>Visit Pathivara Store in Phungling and explore our latest collection.</p>
+						</div>
+						<a class="btn btn-light" href="tel:9842743833">Call Store</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="about">
+				<div class="container about-grid">
+					<div class="about-box">
+						<p class="eyebrow">ABOUT US</p>
+						<h2>Your local destination for family fashion.</h2>
+						<p>
+							Pathivara Store brings together everyday clothing and traditional fashion for men, women and children. We aim to offer good choices, friendly service and convenient shopping for our local community.
+						</p>
+					</div>
+					<div class="benefit-grid">
+						<article><span>✓</span><h3>Quality Choices</h3><p>Clothing selected for style and everyday comfort.</p></article>
+						<article><span>✓</span><h3>For the Family</h3><p>Men's, women's and kids' collections in one place.</p></article>
+						<article><span>✓</span><h3>Local Service</h3><p>Conveniently located in Phungling, Taplejung.</p></article>
+						<article><span>✓</span><h3>Friendly Support</h3><p>Call us for product questions and orders.</p></article>
+					</div>
+				</div>
+			</section>
+
+			<section class="section contact-section" id="contact">
+				<div class="container contact-grid">
+					<div>
+						<p class="eyebrow">GET IN TOUCH</p>
+						<h2>Visit Pathivara Store</h2>
+						<p>Come visit us in Phungling, Taplejung, Nepal. For product availability or orders, give us a call.</p>
+					</div>
+					<div class="contact-card">
+						<a href="tel:9842743833"><span>📞</span><div><small>Phone</small><strong>9842743833</strong></div></a>
+						<div><span>📍</span><div><small>Location</small><strong>Phungling, Taplejung, Nepal</strong></div></div>
+						<a class="whatsapp" href="https://wa.me/9779842743833" target="_blank"><span>💬</span><div><small>WhatsApp</small><strong>Chat with us</strong></div></a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="footer-bottom">© 2026 Pathivara Store · Phungling, Taplejung · <a href="tel:9842743833">9842743833</a></div>
+		</footer>
+
+		<script src="js/products.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+			document.getElementById("homeGrid").innerHTML = products.slice(0, 4).map((p) => `
+				<article class="product-card">
+					<a href="product.html?id=${p.id}" class="product-image">
+						<img src="${p.image}" alt="${p.name}" loading="lazy">
+					</a>
+					<div class="product-info">
+						<h3>${p.name}</h3>
+						<div class="product-meta">${p.category}</div>
+						<div class="price">Rs. ${p.price.toLocaleString("en-IN")}</div>
+						<div class="product-actions">
+							<a class="btn btn-outline" href="product.html?id=${p.id}">View</a>
+							<button class="btn btn-primary" onclick="addToCart(${p.id})">Add to Cart</button>
+						</div>
+					</div>
+				</article>`).join("");
+		</script>
+	</body>
+</html>
