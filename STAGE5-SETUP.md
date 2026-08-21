@@ -11,6 +11,7 @@ Requires PHP 8.1+ and PDO SQLite.
 7. Customer orders are saved to SQLite and appear in the dashboard.
 8. Use HTTPS in production.
 9. Products created, edited or deleted in the dashboard are immediately used by the public shop, product and cart pages.
+10. If you forget the password while developing locally, use `/reset-password.php` from the same computer. It is blocked for remote visitors and does not delete store data.
 
 Stage 5 replaces browser-only admin authentication/order storage with server-side SQLite, secure password hashing, sessions and CSRF checks.
 
