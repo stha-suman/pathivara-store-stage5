@@ -84,9 +84,9 @@ const products = [
     category: "Women",
     price: 1800,
     image:
-      "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=900&q=85",
+      "https://byhand.in/cdn/shop/files/9.jpg?v=1727855089",
     images: [
-      "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=900&q=85",
+      "https://byhand.in/cdn/shop/files/9.jpg?v=1727855089",
     ],
     sizes: ["S", "M", "L", "XL"],
     colors: ["Pink", "Green"],
@@ -99,9 +99,9 @@ const products = [
     category: "Men",
     price: 1400,
     image:
-      "https://images.unsplash.com/photo-1625910513413-5fc45b8c1f48?auto=format&fit=crop&w=900&q=85",
+      "https://cdna.lystit.com/photos/ralphlauren/8ce93752/1500x1500/polo-ralph-lauren-White-Pullover-Mit-Polokragen-Und-Zopfmuster.jpeg",
     images: [
-      "https://images.unsplash.com/photo-1625910513413-5fc45b8c1f48?auto=format&fit=crop&w=900&q=85",
+      "https://cdna.lystit.com/photos/ralphlauren/8ce93752/1500x1500/polo-ralph-lauren-White-Pullover-Mit-Polokragen-Und-Zopfmuster.jpeg",
     ],
     sizes: ["M", "L", "XL", "XXL"],
     colors: ["Black", "Navy"],
@@ -162,9 +162,9 @@ const products = [
     category: "Sarees",
     price: 2900,
     image:
-      "https://images.unsplash.com/photo-1583391733981-8498407e5f8d?auto=format&fit=crop&w=900&q=85",
+      "https://www.jollysilks.com/media/cache/834x0/catalog/product/s/t/std801002545_01_1696566766.webp",
     images: [
-      "https://images.unsplash.com/photo-1583391733981-8498407e5f8d?auto=format&fit=crop&w=900&q=85",
+      "https://www.jollysilks.com/media/cache/834x0/catalog/product/s/t/std801002545_01_1696566766.webp",
     ],
     sizes: ["Free Size"],
     colors: ["Green", "Blue"],
