@@ -64,7 +64,8 @@ async function init() {
 async function load() {
   [products, orders] = await Promise.all([
     api("products.php"),
-    api("orders.php"),
+    // Order data is admin-only, including when it is read for the dashboard.
+    api("orders.php", { headers: { "X-CSRF-Token": csrf } }),
   ]);
   render();
   let s = await api("settings.php");
