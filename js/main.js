@@ -2,7 +2,8 @@ let cart = JSON.parse(localStorage.getItem("pathivaraCart") || "[]");
 
 function updateCartCount() {
   const element = document.getElementById("cartCount");
-  if (element) element.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+  if (element)
+    element.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
 }
 
 document.getElementById("menuToggle")?.addEventListener("click", () => {
@@ -19,7 +20,7 @@ document.getElementById("themeToggle")?.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   localStorage.setItem(
     "pathivaraTheme",
-    document.body.classList.contains("dark") ? "dark" : "light"
+    document.body.classList.contains("dark") ? "dark" : "light",
   );
 });
 
@@ -35,14 +36,17 @@ document.querySelectorAll(".lang-btn").forEach((button) => {
       item.classList.toggle("active", item.dataset.lang === language);
     });
     document.querySelectorAll("[data-en]").forEach((element) => {
-      element.textContent = language === "ne" ? element.dataset.ne : element.dataset.en;
+      element.textContent =
+        language === "ne" ? element.dataset.ne : element.dataset.en;
     });
   });
 });
 
 function addToCart(id) {
   const storedCart = JSON.parse(localStorage.getItem("pathivaraCart") || "[]");
-  const existingItem = storedCart.find((item) => item.id === id && !item.size && !item.color);
+  const existingItem = storedCart.find(
+    (item) => item.id === id && !item.size && !item.color,
+  );
 
   if (existingItem) {
     existingItem.qty++;

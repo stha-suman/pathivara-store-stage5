@@ -1,1 +1,5 @@
-<?php require_once __DIR__.'/common.php';session_start_safe();if(($_GET['action']??'me')==='me')json_response(['authenticated'=>!empty($_SESSION['admin_id']),'username'=>$_SESSION['admin_user']??null,'csrf'=>csrf()]);json_response(['error'=>'Unknown action'],400);
+<?php require_once __DIR__ . '/common.php';
+session_start_safe();
+if (($_GET['action'] ?? 'me') === 'me')
+    json_response(['authenticated' => !empty($_SESSION['admin_id']), 'username' => $_SESSION['admin_user'] ?? null, 'csrf' => csrf()]);
+json_response(['error' => 'Unknown action'], 400);
