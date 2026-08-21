@@ -192,7 +192,13 @@ $("pf").onsubmit = async (e) => {
       json(id ? "PUT" : "POST", d),
     );
     $("pm").hidden = true;
-    await load();
+    try {
+      await load();
+    } catch (error) {
+      alert(
+        "The product was saved, but the dashboard could not refresh. Reload this page to see the latest data.",
+      );
+    }
   } catch (error) {
     alert(error.message);
   }
