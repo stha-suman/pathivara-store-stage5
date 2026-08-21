@@ -3,8 +3,27 @@ let csrf = "",
   orders = [];
 const $ = (x) => document.getElementById(x);
 async function api(u, o = {}) {
-  let r = await fetch("api/" + u, o),
+  let r = await fetch("api/" + u, { credentials: "same-origin", ...o }),
     d = await r.json().catch(() => ({}));
+  // A session can rotate after login or when an older admin tab is left open.
+  // Refresh once, then repeat the original protected request with the new token.
+  if (r.status === 419 && u !== "auth.php?action=me") {
+    const sessionResponse = await fetch("api/auth.php?action=me", {
+      credentials: "same-origin",
+    });
+    const session = await sessionResponse.json().catch(() => ({}));
+    if (!session.authenticated) {
+      location.replace("login.php");
+      throw Error("Your session has expired. Please sign in again.");
+    }
+    csrf = session.csrf;
+    r = await fetch("api/" + u, {
+      credentials: "same-origin",
+      ...o,
+      headers: { ...(o.headers || {}), "X-CSRF-Token": csrf },
+    });
+    d = await r.json().catch(() => ({}));
+  }
   if (!r.ok) throw Error(d.error || "Request failed");
   return d;
 }
@@ -32,7 +51,7 @@ function esc(s) {
   );
 }
 async function init() {
-  let m = await api("auth.php?action=me");
+  let m = await api("auth.php?action=me", { cache: "no-store" });
   csrf = m.csrf;
   if (!m.authenticated) {
     location.replace("login.php");
