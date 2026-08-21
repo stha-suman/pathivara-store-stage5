@@ -35,7 +35,7 @@ async function init() {
   let m = await api("auth.php?action=me");
   csrf = m.csrf;
   if (!m.authenticated) {
-    $("loginView").hidden = false;
+    location.replace("login.php");
     return;
   }
   $("loginView").hidden = true;
@@ -146,8 +146,12 @@ function open(p) {
 window.edit = (id) => open(products.find((p) => p.id === id));
 window.del = async (id) => {
   if (confirm("Delete this product?")) {
-    await api("products.php?id=" + id, json("DELETE", {}));
-    await load();
+    try {
+      await api("products.php?id=" + id, json("DELETE", {}));
+      await load();
+    } catch (error) {
+      alert(error.message);
+    }
   }
 };
 $("pf").onsubmit = async (e) => {
@@ -163,12 +167,16 @@ $("pf").onsubmit = async (e) => {
     colors: ["Default"],
   };
   let id = +$("id").value;
-  await api(
-    "products.php" + (id ? "?id=" + id : ""),
-    json(id ? "PUT" : "POST", d),
-  );
-  $("pm").hidden = true;
-  await load();
+  try {
+    await api(
+      "products.php" + (id ? "?id=" + id : ""),
+      json(id ? "PUT" : "POST", d),
+    );
+    $("pm").hidden = true;
+    await load();
+  } catch (error) {
+    alert(error.message);
+  }
 };
 window.changeStatus = async (id, s) => {
   await api("orders.php?id=" + id, json("PUT", { status: s }));

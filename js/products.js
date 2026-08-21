@@ -1,4 +1,4 @@
-const products = [
+let products = [
   {
     id: 1,
     name: "Classic Cotton Shirt",
@@ -188,3 +188,29 @@ const products = [
     description: "A fun denim-inspired outfit for kids.",
   },
 ];
+
+// The storefront and the admin dashboard share the same server catalog.
+// Keep the bundled list only as a fallback when the site is opened without PHP.
+try {
+  const request = new XMLHttpRequest();
+  request.open("GET", "api/products.php", false);
+  request.send();
+  if (request.status >= 200 && request.status < 300) {
+    const liveProducts = JSON.parse(request.responseText);
+    if (Array.isArray(liveProducts)) {
+      products = liveProducts.map((product) => ({
+        ...product,
+        images:
+          Array.isArray(product.images) && product.images.length
+            ? product.images
+            : product.image
+              ? [product.image]
+              : [],
+        sizes: Array.isArray(product.sizes) ? product.sizes : [],
+        colors: Array.isArray(product.colors) ? product.colors : [],
+      }));
+    }
+  }
+} catch (_) {
+  // Static preview mode: the bundled catalogue above remains available.
+}

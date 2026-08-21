@@ -1,7 +1,12 @@
 const params = new URLSearchParams(location.search);
-const id = Number(params.get("id")) || 1;
-const product = products.find((p) => p.id === id) || products[0];
+const id = Number(params.get("id"));
+const product = products.find((p) => p.id === id) || (!params.has("id") ? products[0] : null);
 const detail = document.getElementById("productDetail");
+
+if (!product) {
+  detail.innerHTML = `<div class="empty-state"><div>🔎</div><h1>Product not found</h1><p>This product may no longer be available.</p><a class="btn btn-primary" href="shop.html">Browse Products</a></div>`;
+  document.getElementById("relatedGrid").innerHTML = "";
+} else {
 
 detail.innerHTML = `
 <div class="breadcrumbs"><a href="shop.html">Shop</a> / ${product.category} / ${product.name}</div>
@@ -83,3 +88,4 @@ document.getElementById("relatedGrid").innerHTML = related
       `<article class="product-card"><a href="product.html?id=${p.id}" class="product-image"><img src="${p.image}" alt="${p.name}" loading="lazy"></a><div class="product-info"><h3>${p.name}</h3><div class="product-meta">${p.category}</div><div class="price">Rs. ${p.price.toLocaleString("en-IN")}</div></div></article>`,
   )
   .join("");
+}

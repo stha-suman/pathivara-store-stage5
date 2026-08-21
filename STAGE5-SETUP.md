@@ -10,6 +10,7 @@ Requires PHP 8.1+ and PDO SQLite.
 6. Admin dashboard: `/admin.html`.
 7. Customer orders are saved to SQLite and appear in the dashboard.
 8. Use HTTPS in production.
+9. Products created, edited or deleted in the dashboard are immediately used by the public shop, product and cart pages.
 
 Stage 5 replaces browser-only admin authentication/order storage with server-side SQLite, secure password hashing, sessions and CSRF checks.
 

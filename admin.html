@@ -7,20 +7,7 @@
     <link rel="stylesheet" href="admin/css/admin.css" />
   </head>
   <body>
-    <div class="login-view" id="loginView">
-      <div class="login-card">
-        <div class="logo">P</div>
-        <p class="eyebrow">PATHIVARA STORE</p>
-        <h1>Secure Admin</h1>
-        <p class="muted">Live database dashboard.</p>
-        <form id="loginForm">
-          <label>Username<input id="u" required /></label
-          ><label>Password<input id="p" type="password" required /></label>
-          <p class="error" id="le"></p>
-          <button class="btn primary full">Sign In</button>
-        </form>
-      </div>
-    </div>
+    <div class="login-view" id="loginView" hidden></div>
     <div class="app" id="app" hidden>
       <aside class="sidebar">
         <div class="side-brand">
@@ -196,7 +183,7 @@
               </select></label
             ><label>Price<input id="pr" type="number" min="0" required /></label
             ><label>Stock<input id="st" type="number" min="0" required /></label
-            ><label class="wide">Image URL<input id="im" /></label
+            ><label class="wide">Image URL<input id="im" type="url" placeholder="https://example.com/product.jpg" /></label
             ><label class="wide"
               >Description<textarea id="de"></textarea>
             </label>
